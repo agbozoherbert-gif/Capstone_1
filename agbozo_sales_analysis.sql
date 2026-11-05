@@ -31,10 +31,11 @@ FROM store_sales;
 -- What is total revenue overall for sales in the assigned territory, plus the start date and end date
 -- that tell you what period the data covers?
 
-SELECT SUM(SalesTotal) AS Total_Revenue,
+SELECT COUNT(*) AS Total_Transactions,
+       SUM(SalesTotal) AS Total_Revenue,
        MIN(Date) AS Start_Date,
        MAX(Date) AS End_Date
-FROM Online_Sales
+FROM online_Sales
 WHERE ShiptoState = 'Oregon';
 
 -- What is the revenue breakdown by year and month for the sales territory?
@@ -51,6 +52,10 @@ ORDER BY Oregon_Sales_Year,
        Oregon_Sales_Month;       
 -- Provide a comparison of total revenue for the specific sales territory and the region it belongs to.
 
+SELECT SUM(SalesTotal)
+       AS West_Online_Revenue
+FROM online_sales;     
+
 -- OREGON ONLINE SALES REVENUE
 
 SELECT 'Oregon' AS Territory,
@@ -63,22 +68,12 @@ UNION ALL
 -- WEST REGION ONLINE SALES REVENUE
 
 SELECT 'West Region' AS Territory,
-       SUM(West_Revenue) AS Total_Revenue
-FROM ( SELECT SUM(SalesTotal) AS West_Revenue
-FROM online_sales 
+       SUM(SalesTotal) AS Total_Revenue
+FROM online_sales; 
 
-UNION ALL
-
-SELECT SUM(ss.Sale_Amount) AS West_Revenue
-FROM store_sales ss
-JOIN store_locations sl
-       ON ss.Store_ID = sl.StoreId
-WHERE sl.State = 'Colorado'
- ) AS West_Sales;
- 
 
 -- What is the number of transactions per month and average transaction amount by product
--- category for the sales territory?
+-- category for the sales territory? 
 
 SELECT YEAR(os.Date) AS Oregon_Sales_Year,
        MONTH(os.DATE) AS Oregon_Sales_Month,
@@ -116,5 +111,16 @@ ORDER BY Sales_Rank;
 -- Analysis: Sales are trending high in the Pacific Northwest, with California, Washington, and Oregon
 -- What is your recommendation for where to focus sales attention in the next quarter?
 
--- ANALYSIS ANSWER: 
+-- ANALYSIS ANSWER: For the next quarter, I recommend prioritizing the growth of Oregon's
+-- online sales by focusing on product categories with strong customer activity and higher
+-- average transaction amounts. The analysis shows that General Books category generates 
+-- a substanstial volume of transactions, while Technology & Accesories produces considerably
+-- higher average transaction amounts. I recommend developing targeted promotions for these 
+-- categories to encourage repeat purchases while simultaneously increasing the value of individual
+-- transactions. With this in mind, I believe California and Washington's figures should serve as 
+-- benchmarks to help identify growth opportunities for Oregon. This could help strengthen their
+-- competitive stance within the region. Sales campaigns should align with the monthly revenue 
+-- and purchasing patterns identified within the analysis. This approach would allow the 
+-- business to build progressively in Oregon utilzing their existing customer activty, increase
+-- revenue, and and improve its contribution to regional online sales.
 
