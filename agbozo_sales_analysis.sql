@@ -1,5 +1,6 @@
 -- Capstone 1: ANALYSIS W/ SQL & EXCEL
 -- SALES TERRITORY: OREGON
+-- EmporiUm
 -- HERBERT AGBOZO
 -- DATA BOOTCAMP: NIGEL CALDON
 
@@ -71,8 +72,8 @@ SELECT CAST(AVG(SalesTotal) AS DECIMAL(12,2))
        AS Median_Transaction_Value
 FROM Ranked_Transactions
 WHERE Transaction_Rank IN ( 
-       FLOOR((Total_Transactions + 1)/2),
-       FLOOR((Total_Transactions + 2)/2)
+       ROUND((Total_Transactions + 1)/2),
+       ROUND((Total_Transactions + 2)/2)
 );
 
 -- Median Transaction Value: 142.24
