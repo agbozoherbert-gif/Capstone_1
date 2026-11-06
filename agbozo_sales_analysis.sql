@@ -3,6 +3,35 @@
 -- HERBERT AGBOZO
 -- DATA BOOTCAMP: NIGEL CALDON
 
+SELECT
+    COUNT(*) AS Total_Transactions,
+    SUM(SalesTotal) AS Total_Revenue,
+    AVG(SalesTotal) AS Average_Transaction,
+    MIN(Date) AS First_Transaction,
+    MAX(Date) AS Last_Transaction
+FROM Online_Sales;
+
+SELECT
+    YEAR(Date) AS Sales_Year,
+    COUNT(*) AS Total_Transactions,
+    SUM(SalesTotal) AS Total_Revenue
+FROM Online_Sales
+GROUP BY YEAR(Date)
+ORDER BY Sales_Year;
+
+-- SUMMARY STATISTICS AND ANNUAL SALES TRENDS
+--
+-- I used COUNT() to count transactions, SUM() to calculate
+-- total revenue, and AVG() to find the average transaction amount.
+--
+-- MIN() and MAX() helped identify the first and last transaction dates.
+--
+-- I used WHERE to focus on Oregon when analyzing my territory.
+-- YEAR() extracts the year from each transaction date, while
+-- GROUP BY organizes the results by year.
+--
+-- These queries helped me understand overall sales performance
+-- and compare Oregon's results with the entire database.
 
 
 -- 1. What is total revenue overall for sales in the assigned territory, plus the start date and end date
