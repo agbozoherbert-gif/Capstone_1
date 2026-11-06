@@ -133,6 +133,6 @@ The monthly revenue PivotChart satisfies the project requirement to use Excel Pi
 
 ## Video Walkthrough
 
-**Video link:** 
+**Video link:** (https://www.loom.com/share/ea1b642e9cc1470db78f0534a95b90db)
 
-The walkthrough will explain the SQL analysis, findings for each business question, the recommendation, and the Excel visualizations.
+The walkthrough explains the SQL analysis, findings for each business question, the recommendation, and the Excel visualizations.
